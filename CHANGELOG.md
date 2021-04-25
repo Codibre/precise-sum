@@ -1,28 +1,12 @@
-# Changelog
-  All notable changes to this project will be documented in this file.
 
-  The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-  and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-  ## Next Release
-
-
-
--v2.0.0
-
-- Updating empty project for new standards
-
--v1.0.3
-
-- Adequation of configurations and project for a lib example
-
--v1.0.2
-
-- Updating libraries
-
-
--v1.0.1
-  Removing unneeded dependencies
-
--v1.0.0
-  First release
+* 1c6bb1a testing agains big.js
+* 4d84a5a fixing log
+* c45cc3d organizing benchmarks
+* b99b161 organizing benchmarks
+* 374a498 organizing benchmarks
+* 8d4dd4f creating bigint fallback multiplication
+* 518fcff adding precise multiplication
+* 13de23a fixing pipe
+* 82c211d organizing functions and tests
+* ef8886a creating precie sum and precise weight sum functions
+* 5e575e2 Initial commit
