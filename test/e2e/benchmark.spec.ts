@@ -1,4 +1,5 @@
 import Benchmark = require('benchmark');
+import { Big } from 'big.js';
 import { multiply, sum, weightSum, weightSumObj } from '../../src';
 
 function output(
@@ -24,7 +25,7 @@ describe('sum Benchmark', () => {
 
 	it('should win at weighted sum all', () => {
 		const wrapper = { log: '' };
-		const results = ['', '', '', ''];
+		const results: string[] = [];
 		const benchmarkSuite = new Benchmark.Suite('sum');
 		benchmarkSuite
 			.add('using reduce: just sum', () => {
@@ -40,6 +41,11 @@ describe('sum Benchmark', () => {
 			})
 			.add('multiply-sum-divide', () => {
 				results[1] = sum(baseTest).toString();
+			})
+			.add('big.js', () => {
+				results[2] = baseTest
+					.reduce((acc, x) => acc.add(x), new Big(0))
+					.toString();
 			})
 			.on('cycle', function (event: any) {
 				wrapper.log += `${event.target}\n`;

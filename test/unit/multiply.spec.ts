@@ -26,7 +26,7 @@ function rangeCalc(digits: number) {
 describe(multiply.name, () => {
 	const baseTest = [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9];
 
-	it.only('plus should work', () => {
+	it('plus should work', () => {
 		expect(multiply(baseTest).toString()).toBe('33.52212864');
 	});
 
