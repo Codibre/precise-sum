@@ -77,12 +77,7 @@ module.exports = {
     'no-fallthrough': 'error',
     'no-invalid-regexp': 'error',
     'no-invalid-this': 'off',
-    'no-magic-numbers': [
-      'error',
-      {
-        ignore: [0, 1, -1],
-      },
-    ],
+    'no-magic-numbers': 'off',
     'no-multiple-empty-lines': [
       'error',
       {
