@@ -1,4 +1,4 @@
-import { defaultCorrectionFactor } from './consts';
+import { defaultCorrectionFactor } from './constants';
 import { KeysOfType } from 'is-this-a-pigeon';
 
 /**

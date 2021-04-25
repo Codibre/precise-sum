@@ -1,4 +1,4 @@
-import { defaultDigits } from './consts';
+import { defaultDigits } from './constants';
 
 /**
  * Round value for the specified number of de

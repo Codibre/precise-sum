@@ -1,5 +1,5 @@
 {
-  "name": "precise-sum",
+  "name": "preciser-calc",
   "description": "This project is just a template for creation of new projects",
   "version": "0.0.0",
   "private": true,
@@ -64,11 +64,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/codibre/precise-sum.git"
+    "url": "https://github.com/codibre/preciser-calc.git"
   },
-  "homepage": "https://github.com/codibre/precise-sum#readme",
+  "homepage": "https://github.com/codibre/preciser-calc#readme",
   "bugs": {
-    "url": "https://github.com/codibre/precise-sum/issues"
+    "url": "https://github.com/codibre/preciser-calc/issues"
   },
   "keywords": [],
   "license": "MIT",

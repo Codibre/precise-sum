@@ -1,5 +1,5 @@
 import Benchmark = require('benchmark');
-import { sum, weightSum, weightSumObj } from '../../src';
+import { multiply, sum, weightSum, weightSumObj } from '../../src';
 
 describe('sum Benchmark', () => {
 	const baseTest = [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9];
@@ -14,11 +14,48 @@ describe('sum Benchmark', () => {
 		const results = ['', '', '', ''];
 		const benchmarkSuite = new Benchmark.Suite();
 		benchmarkSuite
-			.add('just sum', () => {
+			.add('using reduce: just sum', () => {
 				results[0] = baseTest.reduce((acc, a) => acc + a, 0).toFixed(1);
+			})
+			.add('using for: just sum', () => {
+				let acc = 0;
+				const { length } = baseTest;
+				for (let i = 0; i < length; i++) {
+					acc += baseTest[i];
+				}
+				acc.toFixed(1);
 			})
 			.add('multiply-sum-divide', () => {
 				results[1] = sum(baseTest).toString();
+			})
+			.on('cycle', function (event: any) {
+				log += `${event.target}\n`;
+			})
+			.on('complete', function (this: any) {
+				console.log(results);
+				console.log(log);
+			})
+			.run();
+	});
+
+	it.only('should win at weighted multiply all', () => {
+		let log = '';
+		const results = ['', '', '', ''];
+		const benchmarkSuite = new Benchmark.Suite();
+		benchmarkSuite
+			.add('using reduce: just multiply', () => {
+				results[0] = baseTest.reduce((acc, a) => acc * a, 1).toString();
+			})
+			.add('using for: just multiply', () => {
+				let acc = 1;
+				const { length } = baseTest;
+				for (let i = 0; i < length; i++) {
+					acc *= baseTest[i];
+				}
+				acc.toString();
+			})
+			.add('multiply-multiply-divide', () => {
+				results[1] = multiply(baseTest).toString();
 			})
 			.on('cycle', function (event: any) {
 				log += `${event.target}\n`;
