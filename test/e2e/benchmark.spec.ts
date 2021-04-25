@@ -1,6 +1,15 @@
 import Benchmark = require('benchmark');
 import { multiply, sum, weightSum, weightSumObj } from '../../src';
 
+function output(results: string[], log: string): Function | undefined {
+	return function (this: Benchmark) {
+		console.log(this.name);
+		console.log('-----------------------------');
+		console.log(results);
+		console.log(log);
+	};
+}
+
 describe('sum Benchmark', () => {
 	const baseTest = [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9];
 	const weights = [10, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -12,7 +21,7 @@ describe('sum Benchmark', () => {
 	it('should win at weighted sum all', () => {
 		let log = '';
 		const results = ['', '', '', ''];
-		const benchmarkSuite = new Benchmark.Suite();
+		const benchmarkSuite = new Benchmark.Suite('sum');
 		benchmarkSuite
 			.add('using reduce: just sum', () => {
 				results[0] = baseTest.reduce((acc, a) => acc + a, 0).toFixed(1);
@@ -31,17 +40,14 @@ describe('sum Benchmark', () => {
 			.on('cycle', function (event: any) {
 				log += `${event.target}\n`;
 			})
-			.on('complete', function (this: any) {
-				console.log(results);
-				console.log(log);
-			})
+			.on('complete', output(results, log))
 			.run();
 	});
 
-	it.only('should win at weighted multiply all', () => {
+	it('should win at weighted multiply all', () => {
 		let log = '';
 		const results = ['', '', '', ''];
-		const benchmarkSuite = new Benchmark.Suite();
+		const benchmarkSuite = new Benchmark.Suite('multiply');
 		benchmarkSuite
 			.add('using reduce: just multiply', () => {
 				results[0] = baseTest.reduce((acc, a) => acc * a, 1).toString();
@@ -60,17 +66,14 @@ describe('sum Benchmark', () => {
 			.on('cycle', function (event: any) {
 				log += `${event.target}\n`;
 			})
-			.on('complete', function (this: any) {
-				console.log(results);
-				console.log(log);
-			})
+			.on('complete', output(results, log))
 			.run();
 	});
 
 	it('should win at weighted sum all', () => {
 		let log = '';
 		const results = ['', '', '', ''];
-		const benchmarkSuite = new Benchmark.Suite();
+		const benchmarkSuite = new Benchmark.Suite('weightSum');
 		benchmarkSuite
 			.add('using reduce: just multiplyWeight-sum', () => {
 				results[0] = baseTest
@@ -108,10 +111,7 @@ describe('sum Benchmark', () => {
 			.on('cycle', function (event: any) {
 				log += `${event.target}\n`;
 			})
-			.on('complete', function (this: any) {
-				console.log(results);
-				console.log(log);
-			})
+			.on('complete', output(results, log))
 			.run();
 		expect(results[0]).toBe(results[1]);
 		expect(results[2]).toBe(results[3]);
