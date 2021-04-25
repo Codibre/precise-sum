@@ -1,7 +1,10 @@
 import Benchmark = require('benchmark');
 import { multiply, sum, weightSum, weightSumObj } from '../../src';
 
-function output(results: string[], log: string): Function | undefined {
+function output(
+	results: string[],
+	{ log }: { log: string },
+): Function | undefined {
 	return function (this: Benchmark) {
 		console.log(`${this.name}
 -----------------------------
@@ -20,7 +23,7 @@ describe('sum Benchmark', () => {
 	}));
 
 	it('should win at weighted sum all', () => {
-		let log = '';
+		const wrapper = { log: '' };
 		const results = ['', '', '', ''];
 		const benchmarkSuite = new Benchmark.Suite('sum');
 		benchmarkSuite
@@ -39,14 +42,14 @@ describe('sum Benchmark', () => {
 				results[1] = sum(baseTest).toString();
 			})
 			.on('cycle', function (event: any) {
-				log += `${event.target}\n`;
+				wrapper.log += `${event.target}\n`;
 			})
-			.on('complete', output(results, log))
+			.on('complete', output(results, wrapper))
 			.run();
 	});
 
 	it('should win at weighted multiply all', () => {
-		let log = '';
+		const wrapper = { log: '' };
 		const results = ['', '', '', ''];
 		const benchmarkSuite = new Benchmark.Suite('multiply');
 		benchmarkSuite
@@ -65,14 +68,14 @@ describe('sum Benchmark', () => {
 				results[1] = multiply(baseTest).toString();
 			})
 			.on('cycle', function (event: any) {
-				log += `${event.target}\n`;
+				wrapper.log += `${event.target}\n`;
 			})
-			.on('complete', output(results, log))
+			.on('complete', output(results, wrapper))
 			.run();
 	});
 
 	it('should win at weighted sum all', () => {
-		let log = '';
+		const wrapper = { log: '' };
 		const results = ['', '', '', ''];
 		const benchmarkSuite = new Benchmark.Suite('weightSum');
 		benchmarkSuite
@@ -110,9 +113,9 @@ describe('sum Benchmark', () => {
 				results[3] = weightSumObj(weightedList, 'value', 'weight').toString();
 			})
 			.on('cycle', function (event: any) {
-				log += `${event.target}\n`;
+				wrapper.log += `${event.target}\n`;
 			})
-			.on('complete', output(results, log))
+			.on('complete', output(results, wrapper))
 			.run();
 		expect(results[0]).toBe(results[1]);
 		expect(results[2]).toBe(results[3]);
