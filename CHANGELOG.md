@@ -1,4 +1,8 @@
 
+## 0.1.1
+* 68a1a28 fixing readme
+## v0.1.0
+* c3c7f99 0.1.0
 * 1c6bb1a testing agains big.js
 * 4d84a5a fixing log
 * c45cc3d organizing benchmarks
