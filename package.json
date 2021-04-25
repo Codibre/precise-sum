@@ -18,7 +18,7 @@
     "lint": "npm run lint:format && npm run lint:style",
     "lint:fix": "npm run lint:format:fix && npm run lint:style:fix",
     "build": "tsc -p tsconfig.build.json",
-    "test": "jest test/unit --runInBand",
+    "test": "jest test/unit",
     "test:watch": "jest test/unit --watch",
     "test:coverage": "jest test/unit --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
@@ -103,5 +103,8 @@
     "typedoc": "^0.20.34",
     "typedoc-plugin-markdown": "^3.6.0",
     "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "is-this-a-pigeon": "^0.4.1"
   }
 }
