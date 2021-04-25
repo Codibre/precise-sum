@@ -1,5 +1,6 @@
 import Benchmark = require('benchmark');
 import { Big } from 'big.js';
+import { Decimal } from 'decimal.js';
 import { multiply, sum, weightSum, weightSumObj } from '../../src';
 
 function output(
@@ -45,6 +46,11 @@ describe('sum Benchmark', () => {
 			.add('big.js', () => {
 				results[2] = baseTest
 					.reduce((acc, x) => acc.add(x), new Big(0))
+					.toString();
+			})
+			.add('decimal.js', () => {
+				results[2] = baseTest
+					.reduce((acc, x) => acc.add(x), new Decimal(0))
 					.toString();
 			})
 			.on('cycle', function (event: any) {
