@@ -3,13 +3,13 @@ import { multiply, sum, weightSum, weightSumObj } from '../../src';
 
 function output(
 	results: string[],
-	{ log }: { log: string },
+	wrapper: { log: string },
 ): Function | undefined {
 	return function (this: Benchmark) {
 		console.log(`${this.name}
 -----------------------------
 ${results}
-${log}
+${wrapper.log}
 `);
 	};
 }
