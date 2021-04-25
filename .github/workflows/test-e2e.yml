@@ -22,4 +22,4 @@ jobs:
       - name: install
         run: npm ci
       - name: 'Test'
-        run: npm test:e2e
+        run: npm run test:e2e
