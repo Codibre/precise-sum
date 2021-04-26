@@ -1,6 +1,6 @@
 {
   "name": "preciser-calc",
-  "description": "This project is just a template for creation of new projects",
+  "description": "Offers fast math operation functions with better decimal precision",
   "version": "0.1.1",
   "author": {
     "name": "Thiago O Santos <tos.oliveira@gmail.com>"
