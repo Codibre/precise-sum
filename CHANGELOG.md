@@ -1,5 +1,10 @@
 
-## 0.1.1
+## 0.2.0
+* 5a08b8d fixing badges
+* 9768a96 fixing package.json description
+* f63cba9 fixing readme, benchmark and round help
+## v0.1.1
+* 5dd62cd 0.1.1
 * 68a1a28 fixing readme
 ## v0.1.0
 * c3c7f99 0.1.0

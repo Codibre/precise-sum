@@ -1,6 +1,6 @@
-fluent-iterable - v0.1.1
+fluent-iterable - v0.2.0
 
-# fluent-iterable - v0.1.1
+# fluent-iterable - v0.2.0
 
 ## Table of contents
 
@@ -68,16 +68,18 @@ ___
 
 ▸ **round**(`value`: *number*, `decimalPlaces?`: *number*): *number*
 
-Round value for the specified number of de
+Round value for the specified number of decimal places
 
 #### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `value` | *number* |
-| `decimalPlaces` | *number* |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `value` | *number* | the value to be round |
+| `decimalPlaces` | *number* | the number of fractioned digits |
 
 **Returns:** *number*
+
+the rounded result
 
 ___
 
