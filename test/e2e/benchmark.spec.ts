@@ -24,7 +24,7 @@ describe('sum Benchmark', () => {
 		weight: weights[i],
 	}));
 
-	it('should win at weighted sum all', () => {
+	it('should win at sum all', () => {
 		const wrapper = { log: '' };
 		const results: string[] = [];
 		const benchmarkSuite = new Benchmark.Suite('sum');
@@ -40,18 +40,8 @@ describe('sum Benchmark', () => {
 				}
 				acc.toFixed(1);
 			})
-			.add('multiply-sum-divide', () => {
+			.add('fast sum', () => {
 				results[1] = sum(baseTest).toString();
-			})
-			.add('big.js', () => {
-				results[2] = baseTest
-					.reduce((acc, x) => acc.add(x), new Big(0))
-					.toString();
-			})
-			.add('decimal.js', () => {
-				results[2] = baseTest
-					.reduce((acc, x) => acc.add(x), new Decimal(0))
-					.toString();
 			})
 			.on('cycle', function (event: any) {
 				wrapper.log += `${event.target}\n`;
@@ -62,7 +52,7 @@ describe('sum Benchmark', () => {
 
 	it('should win at weighted multiply all', () => {
 		const wrapper = { log: '' };
-		const results = ['', '', '', ''];
+		const results: string[] = [];
 		const benchmarkSuite = new Benchmark.Suite('multiply');
 		benchmarkSuite
 			.add('using reduce: just multiply', () => {
@@ -79,6 +69,16 @@ describe('sum Benchmark', () => {
 			.add('multiply-multiply-divide', () => {
 				results[1] = multiply(baseTest).toString();
 			})
+			.add('big.js', () => {
+				results[2] = baseTest
+					.reduce((acc, x) => acc.mul(x), new Big(1))
+					.toString();
+			})
+			.add('decimal.js', () => {
+				results[2] = baseTest
+					.reduce((acc, x) => acc.mul(x), new Decimal(1))
+					.toString();
+			})
 			.on('cycle', function (event: any) {
 				wrapper.log += `${event.target}\n`;
 			})
@@ -88,7 +88,7 @@ describe('sum Benchmark', () => {
 
 	it('should win at weighted sum all', () => {
 		const wrapper = { log: '' };
-		const results = ['', '', '', ''];
+		const results: string[] = [];
 		const benchmarkSuite = new Benchmark.Suite('weightSum');
 		benchmarkSuite
 			.add('using reduce: just multiplyWeight-sum', () => {
